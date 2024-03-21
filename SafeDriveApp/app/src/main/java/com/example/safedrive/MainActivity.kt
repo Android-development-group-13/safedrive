@@ -13,6 +13,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.safedrive.screens.HomeScreen
 import com.example.safedrive.screens.LoginScreen
 import com.example.safedrive.screens.SignUpScreen
 import com.example.safedrive.screens.WelcomeScreen
@@ -52,7 +53,12 @@ fun NavigationApp() {
             route = "signup"
         ) {
             SignUpScreen(navController = navController)
-        }/*composable(
+        }
+        composable(route = "home") {
+            HomeScreen(navController = navController)
+        }
+        /*composable(
+
             route = "signup", arguments = listOf(navArgument(name = "country") {
                 type = NavType.StringType
             })

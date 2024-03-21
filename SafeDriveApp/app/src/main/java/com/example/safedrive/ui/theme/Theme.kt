@@ -22,9 +22,11 @@ private val DarkColorScheme = darkColorScheme(
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary =  primary_200,
-    secondary = primary_300,
-    tertiary = primary_950
+    primary = grey_black, // for text grey color
+    secondary =  primary_400, // accent color
+    tertiary = white, // white
+    onBackground = grey_black,
+    onSurface = gray_500 // greyish
 
     /* Other default colors to override
     background = Color(0xFFFFFBFE),

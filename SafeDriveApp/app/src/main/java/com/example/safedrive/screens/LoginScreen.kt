@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.Button
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -34,6 +35,9 @@ fun LoginScreen(navController: NavController) {
                 label = { Text(text = "Paswword") },
                 value = "******",
                 onValueChange = {})
+        }
+        Button(onClick = { navController.navigate("home") }) {
+            Text(text = "Proceed without login (dev)")
         }
     }
 }
