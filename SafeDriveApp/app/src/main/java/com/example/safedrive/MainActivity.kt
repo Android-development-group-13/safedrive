@@ -28,7 +28,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android")
+                  NavigationApp()
                 }
             }
         }
@@ -39,7 +39,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun NavigationApp() {
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = "Home") {
+    NavHost(navController = navController, startDestination = "welcome") {
         composable(route = "welcome") {
             WelcomeScreen(navController)
         }
