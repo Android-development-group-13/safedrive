@@ -29,7 +29,7 @@ import com.example.safedrive.R
 @Composable
 fun TopBar(navController: NavController?, title: String) {
     Surface(
-        color = MaterialTheme.colorScheme.secondary,
+        color = MaterialTheme.colorScheme.primary,
         modifier = Modifier
             .fillMaxWidth()
             .height(80.dp)
@@ -51,7 +51,7 @@ fun TopBar(navController: NavController?, title: String) {
                     }
                 )
             } else {
-                // Logo
+
                 Image(
                     painter = painterResource(id = R.drawable.logo_white),
                     contentDescription = "Splash Image",
@@ -60,13 +60,6 @@ fun TopBar(navController: NavController?, title: String) {
                     contentScale = ContentScale.Fit
                 )
             }
-
-            Text(
-                text = title,
-                style = MaterialTheme.typography.displaySmall,
-                color = MaterialTheme.colorScheme.onSurface,
-                modifier = Modifier.weight(1f)
-            )
 
             // Inbox icon
             IconButton(
@@ -91,6 +84,7 @@ fun TopBar(navController: NavController?, title: String) {
                     )
                 }
             )
+
         }
     }
 }
