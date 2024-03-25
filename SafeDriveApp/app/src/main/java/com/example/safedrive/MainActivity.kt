@@ -15,6 +15,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.safedrive.screens.HomeScreen
 import com.example.safedrive.screens.LoginScreen
+import com.example.safedrive.screens.RecordDriveScreen
+import com.example.safedrive.screens.SettingsScreen
 import com.example.safedrive.screens.SignUpScreen
 import com.example.safedrive.screens.WelcomeScreen
 import com.example.safedrive.ui.theme.SafedriveTheme
@@ -56,6 +58,12 @@ fun NavigationApp() {
         }
         composable(route = "home") {
             HomeScreen(navController = navController)
+        }
+        composable(route = "record_drive") {
+            RecordDriveScreen(navController = navController)
+        }
+        composable(route = "settings") {
+            SettingsScreen(navController = navController)
         }
         /*composable(
 

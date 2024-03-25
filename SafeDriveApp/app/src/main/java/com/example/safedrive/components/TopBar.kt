@@ -29,7 +29,7 @@ import com.example.safedrive.R
 @Composable
 fun TopBar(navController: NavController?, title: String) {
     Surface(
-        color = MaterialTheme.colorScheme.primary,
+        color = MaterialTheme.colorScheme.onBackground,
         modifier = Modifier
             .fillMaxWidth()
             .height(80.dp)
