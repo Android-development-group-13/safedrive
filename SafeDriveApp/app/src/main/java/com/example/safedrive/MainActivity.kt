@@ -13,10 +13,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.safedrive.screens.HomeScreen
 import com.example.safedrive.screens.LoginScreen
 import com.example.safedrive.screens.SignUpScreen
 import com.example.safedrive.screens.WelcomeScreen
 import com.example.safedrive.ui.theme.SafedriveTheme
+import com.example.safedrive.viewModels.FireBaseViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,7 +30,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("Android")
+                  NavigationApp()
                 }
             }
         }
@@ -39,20 +41,25 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun NavigationApp() {
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = "Home") {
+    NavHost(navController = navController, startDestination = "welcome") {
         composable(route = "welcome") {
             WelcomeScreen(navController)
         }
         composable(
             route = "login"
         ) {
-            LoginScreen(navController = navController)
+            LoginScreen(navController = navController, firebaseviewmodel = FireBaseViewModel())
         }
         composable(
             route = "signup"
         ) {
-            SignUpScreen(navController = navController)
-        }/*composable(
+            SignUpScreen(navController = navController, fireBaseViewModel = FireBaseViewModel())
+        }
+        composable(route = "home") {
+            HomeScreen(navController = navController)
+        }
+        /*composable(
+
             route = "signup", arguments = listOf(navArgument(name = "country") {
                 type = NavType.StringType
             })
