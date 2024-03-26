@@ -18,6 +18,7 @@ import com.example.safedrive.screens.LoginScreen
 import com.example.safedrive.screens.SignUpScreen
 import com.example.safedrive.screens.WelcomeScreen
 import com.example.safedrive.ui.theme.SafedriveTheme
+import com.example.safedrive.viewModels.FireBaseViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,12 +48,12 @@ fun NavigationApp() {
         composable(
             route = "login"
         ) {
-            LoginScreen(navController = navController)
+            LoginScreen(navController = navController, firebaseviewmodel = FireBaseViewModel())
         }
         composable(
             route = "signup"
         ) {
-            SignUpScreen(navController = navController)
+            SignUpScreen(navController = navController, fireBaseViewModel = FireBaseViewModel())
         }
         composable(route = "home") {
             HomeScreen(navController = navController)
