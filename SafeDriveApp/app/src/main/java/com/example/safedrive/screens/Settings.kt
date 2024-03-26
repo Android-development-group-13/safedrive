@@ -28,7 +28,6 @@ import com.example.safedrive.components.TopBar
 
 @Composable
 fun SettingsScreen(navController: NavController) {
-    Scaffold(topBar = { TopBar(navController = navController, title = "") }){
         Image(
             painter = painterResource(id = R.drawable.main_background ), // Replace with your image resource
             contentDescription = "Splash Image",
@@ -38,15 +37,11 @@ fun SettingsScreen(navController: NavController) {
         )
         Column(
             Modifier
-                .padding(it)
+                .padding(5.dp)
                 .fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            BottomNavigationBar(navController)
+
         }
-    }
-
-
-
 }
