@@ -19,6 +19,8 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.ripple.rememberRipple
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -32,8 +34,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.safedrive.R
@@ -62,10 +66,39 @@ fun HomeScreen(navController: NavController) {
                     contentAlignment = Alignment.Center
                 ) {
 
-                    StartDrivingButton()
+
+                    ImageWithButton(navController)
                 }
-                BottomNavigationBar()
+                BottomNavigationBar(navController)
             }
+    }
+}
+
+@Composable
+fun ImageWithButton(navController: NavController) {
+    Box(
+        modifier = Modifier
+            .size(width = 250.dp, height = 250.dp)
+            .clickable {
+                // TODO Navigate to another screen when the Box is clicked
+                navController.navigate("login")
+            },
+        contentAlignment = Alignment.Center
+    ) {
+        Image(
+            painter = painterResource(id = R.drawable.start_driving__btn),
+            contentDescription = "Image",
+            modifier = Modifier
+                .fillMaxSize()
+                .graphicsLayer(alpha = 0.8f), // Adjust the alpha value as needed
+            contentScale = ContentScale.Crop
+        )
+        Text(
+            text = "START DRIVING",
+            color = Color.White,
+            style = MaterialTheme.typography.displaySmall,
+            textAlign = TextAlign.Center
+        )
     }
 }
 @Composable
@@ -73,12 +106,11 @@ fun StartDrivingButton() {
 
     val interactionSource = remember { MutableInteractionSource() }
     val isPressed = interactionSource.collectIsPressedAsState()
-    val cornerRadius by animateDpAsState(targetValue = if (isPressed.value) 10.dp else 50.dp)
 
     Box(
         modifier = Modifier
             .size(width = 250.dp, height = 250.dp)
-            .background(color = Color.Black, shape = CircleShape)
+            .background(color = MaterialTheme.colorScheme.onSurface, shape = CircleShape)
             .clip(CircleShape)
             .clickable(
                 interactionSource = interactionSource,
@@ -89,7 +121,10 @@ fun StartDrivingButton() {
         contentAlignment = Alignment.Center
 
     ) {
-        Text(text = "START DRIVING", style = MaterialTheme.typography.displaySmall, color = Color.White)
+        Text(text = "START DRIVING", style = MaterialTheme.typography.displaySmall,
+            color = Color.White,
+            textAlign = TextAlign.Center
+        )
     }
 }
 
