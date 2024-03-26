@@ -47,7 +47,7 @@ import com.example.safedrive.components.TopBar
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun HomeScreen(navController: NavController) {
-    Scaffold(topBar = { TopBar(navController = navController, title = "") }) {
+
         Image(
             painter = painterResource(id = R.drawable.main_background ), // Replace with your image resource
             contentDescription = "Splash Image",
@@ -69,10 +69,9 @@ fun HomeScreen(navController: NavController) {
 
                     ImageWithButton(navController)
                 }
-                BottomNavigationBar(navController)
+
             }
     }
-}
 
 @Composable
 fun ImageWithButton(navController: NavController) {

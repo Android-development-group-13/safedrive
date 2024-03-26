@@ -37,7 +37,7 @@ fun RecordDriveScreen(navController: NavController) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            BottomNavigationBar(navController)
+
         }
     }
 
