@@ -13,6 +13,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -21,6 +22,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.safedrive.components.BottomNavigationBar
 import com.example.safedrive.components.NavRoute
@@ -56,13 +58,32 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun MainScreen() {
     val navController = rememberNavController()
+
+    // Collect the current route
+    val currentRoute = currentRoute(navController)
+
     Scaffold(
-        topBar = { TopBar(navController = navController, title = "") },
-        bottomBar = { BottomNavigationBar(navController = navController) }
+        topBar = {
+            if (currentRoute !in listOf(NavRoute.Login.route, NavRoute.SignUp.route, NavRoute.Welcome.route)) {
+                TopBar(navController = navController, title = "")
+            }
+        },
+        bottomBar = {
+            if (currentRoute !in listOf(NavRoute.Login.route, NavRoute.SignUp.route, NavRoute.Welcome.route)) {
+                BottomNavigationBar(navController = navController)
+            }
+        }
     ) {
         NavigationApp(navController = navController)
     }
 }
+
+@Composable
+fun currentRoute(navController: NavHostController): String? {
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
+    return navBackStackEntry?.destination?.route
+}
+
 @Composable
 fun NavigationApp(navController: NavHostController) {
 
