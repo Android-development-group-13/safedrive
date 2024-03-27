@@ -42,7 +42,7 @@ import com.example.safedrive.ui.theme.Shapes
 import com.example.safedrive.viewModels.FireBaseViewModel
 
 @Composable
-fun SignUpScreen(navController: NavController,firebaseviewmodel: FireBaseViewModel) {
+fun SignUpScreen(navController: NavController, firebaseviewmodel: FireBaseViewModel) {
     var email: String  by remember { mutableStateOf("") }
     var password: String by remember { mutableStateOf("") }
     var passwordConfirmation: String by remember { mutableStateOf("") }
@@ -152,7 +152,7 @@ fun SignUpScreen(navController: NavController,firebaseviewmodel: FireBaseViewMod
                     onValueChange = { passwordConfirmation = it })
                 Button(onClick = {
                     if(password == passwordConfirmation){
-                        if(fireBaseViewModel.createUser(email,password)){
+                        if(firebaseviewmodel.createUser(email,password)){
                             navController.navigate("home")
                         }
                         else{
