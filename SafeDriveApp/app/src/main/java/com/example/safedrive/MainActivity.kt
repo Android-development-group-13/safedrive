@@ -1,10 +1,12 @@
 package com.example.safedrive
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -24,6 +26,7 @@ import com.example.safedrive.screens.SettingsScreen
 import com.example.safedrive.screens.SignUpScreen
 import com.example.safedrive.screens.WelcomeScreen
 import com.example.safedrive.ui.theme.SafedriveTheme
+import com.example.safedrive.viewModels.FireBaseViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,10 +64,10 @@ fun NavigationApp(navController: NavHostController) {
             WelcomeScreen(navController = navController)
         }
         composable(route = NavRoute.Login.route) {
-            LoginScreen(navController = navController)
+            LoginScreen(navController = navController, firebaseviewmodel = FireBaseViewModel())
         }
         composable(route = NavRoute.SignUp.route) {
-            SignUpScreen(navController = navController)
+            SignUpScreen(navController = navController, fireBaseViewModel = FireBaseViewModel())
         }
         composable(route = NavRoute.Home.route) {
             HomeScreen(navController = navController)
