@@ -2,7 +2,6 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -12,15 +11,15 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.safedrive.R
-import com.example.safedrive.ui.theme.SafedriveTheme
+import com.example.safedrive.ui.theme.gray_600
 
 @Composable
 fun TopBar(navController: NavController?, title: String) {
     Surface(
-        color = Color.Black,
+        color = gray_600,
         modifier = Modifier
             .fillMaxWidth()
-            .height(50.dp)
+            .height(60.dp)
     ) {
         Row(
             modifier = Modifier
@@ -37,7 +36,8 @@ fun TopBar(navController: NavController?, title: String) {
                         Icon(
                             painter = painterResource(id = R.drawable.arrow_back),
                             contentDescription = "Back",
-                            modifier = Modifier.size(45.dp)
+                            modifier = Modifier.size(45.dp),
+                            tint = Color.White
                         )
                     }
                 )
@@ -58,7 +58,8 @@ fun TopBar(navController: NavController?, title: String) {
                         Icon(
                             painter = painterResource(id = R.drawable.inbox_small),
                             contentDescription = "Inbox",
-                            modifier = Modifier.size(35.dp)
+                            modifier = Modifier.size(35.dp),
+                            tint = Color.White
                         )
                     }
                 )

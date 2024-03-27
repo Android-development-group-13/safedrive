@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -31,6 +32,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -58,13 +60,27 @@ fun HomeScreen(navController: NavController) {
             Column(
                 modifier = Modifier.fillMaxSize()
             ) {
+                Spacer(modifier = Modifier.padding(55.dp))
+                Text(text = "You travelled with us", style = MaterialTheme.typography.bodyLarge,
+                    color = Color.White,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier
+                        .align(Alignment.CenterHorizontally)
 
+                )
+                Text(text = "72 h 32 min", style = MaterialTheme.typography.bodySmall,
+                    color = Color.White,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier
+                        .align(Alignment.CenterHorizontally)
+                )
                 Box(
                     modifier = Modifier
                         .weight(1f)
                         .fillMaxSize(),
                     contentAlignment = Alignment.Center
                 ) {
+
                     ImageWithButton(navController)
                 }
 
@@ -82,6 +98,7 @@ fun ImageWithButton(navController: NavController) {
             },
         contentAlignment = Alignment.Center
     ) {
+
         Image(
             painter = painterResource(id = R.drawable.start_driving__btn),
             contentDescription = "Image",
@@ -107,11 +124,10 @@ fun StartDrivingButton() {
     Box(
         modifier = Modifier
             .size(width = 250.dp, height = 250.dp)
-            .background(color = MaterialTheme.colorScheme.onSurface, shape = CircleShape)
             .clip(CircleShape)
             .clickable(
                 interactionSource = interactionSource,
-                indication = rememberRipple()
+                indication = rememberRipple(bounded = true)
             ) {
                 // Clicked
             },
