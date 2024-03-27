@@ -35,6 +35,8 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.safedrive.R
+import com.example.safedrive.components.NavRoute
+import com.example.safedrive.components.NavRoute.*
 import com.example.safedrive.ui.theme.Shapes
 import com.example.safedrive.viewModels.FireBaseViewModel
 
@@ -59,10 +61,10 @@ fun LoginScreen(navController: NavController, firebaseviewmodel: FireBaseViewMod
             }
         )
     }
-    Scaffold(topBar = {}) {
+
         Column(
             Modifier
-                .padding(it)
+                .padding(5.dp)
                 .fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
@@ -116,7 +118,7 @@ fun LoginScreen(navController: NavController, firebaseviewmodel: FireBaseViewMod
             )
             Button(shape = Shapes.medium,onClick = {
                 if(firebaseviewmodel.loginUser(email, password)){
-                    navController.navigate("home")
+                    navController.navigate(Home.route)
                 }
                 else{
                     errorMessage = "Your credentials are incorrect. Please try again."
@@ -127,15 +129,17 @@ fun LoginScreen(navController: NavController, firebaseviewmodel: FireBaseViewMod
             ) {
                 Text(text = "Login")
             }
-            Button(colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.onSurface), shape = Shapes.medium,onClick = {
-                    navController.navigate("signup")
+            Button(colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.onSurface),
+                shape = Shapes.medium,onClick = {
+                navController.navigate(SignUp.route) }
+            ) { Text(text = "Sign up") }
 
-            }
-            ) {
-                Text(text = "Sign Up")
+            Button(colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.onSurface),
+                shape = Shapes.medium,onClick = {
+                    navController.navigate(Home.route) }
+            ) { Text(text = "I am developer") }
+
             }
         }
-    }
 
 
-}

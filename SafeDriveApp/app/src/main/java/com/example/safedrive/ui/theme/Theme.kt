@@ -26,8 +26,9 @@ private val LightColorScheme = lightColorScheme(
     secondary =  primary_400, // accent color
     tertiary = white, // white
     onBackground = grey_black,
-    onSurface = gray_500 // greyish
-
+    onSurface = gray_500, // greyish
+background = gray_600,
+    surface = gray_600
     /* Other default colors to override
     background = Color(0xFFFFFBFE),
     surface = Color(0xFFFFFBFE),

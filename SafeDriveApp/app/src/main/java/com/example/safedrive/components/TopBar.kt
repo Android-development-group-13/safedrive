@@ -1,91 +1,83 @@
-package com.example.safedrive.components
-
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.safedrive.R
-
-// TODO move Top bar to components folder
-
+import com.example.safedrive.ui.theme.gray_600
 
 @Composable
 fun TopBar(navController: NavController?, title: String) {
     Surface(
-        color = Color.LightGray,
+        color = gray_600,
         modifier = Modifier
             .fillMaxWidth()
-            .height(80.dp)
+            .height(60.dp)
     ) {
         Row(
-            modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+            modifier = Modifier
+                .padding(horizontal = 16.dp, vertical = 8.dp)
+                .fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
             if (navController != null) {
+                // Show arrow back if there is history
                 IconButton(
                     onClick = { navController.popBackStack() },
                     content = {
                         Icon(
                             painter = painterResource(id = R.drawable.arrow_back),
                             contentDescription = "Back",
-                            modifier = Modifier
-                                .size(30.dp)
+                            modifier = Modifier.size(45.dp),
+                            tint = Color.White
                         )
                     }
                 )
-            } else {
-
-                Image(
-                    painter = painterResource(id = R.drawable.logo_white),
-                    contentDescription = "Splash Image",
-                    modifier = Modifier
-                        .size(40.dp),
-                    contentScale = ContentScale.Fit
-                )
             }
 
-            // Inbox icon
-            IconButton(
-                onClick = { /* Handle inbox icon click */ },
-                content = {
-                    Icon(
-                        painter = painterResource(id = R.drawable.inbox_small),
-                        contentDescription = "Inbox",
-                        modifier = Modifier.size(35.dp)
-                    )
-                }
-            )
+            Row(horizontalArrangement = Arrangement.End) {
 
-            // User icon
-            IconButton(
-                onClick = { /* Handle user icon click */ },
-                content = {
-                    Icon(
-                        painter = painterResource(id = R.drawable.user_icon_small),
-                        contentDescription = "User",
-                        modifier = Modifier.size(40.dp)
-                    )
-                }
-            )
+                Image(
+                    painter = painterResource(id = R.drawable.logo_white_big),
+                    contentDescription = "Splash Image",
+                    modifier = Modifier
+                        .size(100.dp),
+                )
+                // Inbox icon
+                IconButton(
+                    onClick = { /* Handle inbox icon click */ },
+                    content = {
+                        Icon(
+                            painter = painterResource(id = R.drawable.inbox_small),
+                            contentDescription = "Inbox",
+                            modifier = Modifier.size(35.dp),
+                            tint = Color.White
+                        )
+                    }
+                )
 
+                // User icon
+                IconButton(
+                    onClick = { /* Handle user icon click */ },
+                    content = {
+                        Icon(
+                            painter = painterResource(id = R.drawable.user_icon_small),
+                            contentDescription = "User",
+                            modifier = Modifier.size(40.dp)
+                        )
+                    }
+                )
+
+
+            }
         }
     }
 }

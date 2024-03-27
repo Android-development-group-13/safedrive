@@ -17,8 +17,6 @@ import androidx.compose.ui.unit.dp
 
 import androidx.navigation.NavController
 import com.example.safedrive.R
-import com.example.safedrive.components.BottomNavigationBar
-import com.example.safedrive.components.TopBar
 
 @Composable
 fun RecordDriveScreen(navController: NavController) {
@@ -37,7 +35,7 @@ fun RecordDriveScreen(navController: NavController) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            BottomNavigationBar(navController)
+
         }
     }
 
