@@ -80,7 +80,6 @@ fun HomeScreen(navController: NavController) {
                         .fillMaxSize(),
                     contentAlignment = Alignment.Center
                 ) {
-
                     ImageWithButton(navController)
                 }
 
