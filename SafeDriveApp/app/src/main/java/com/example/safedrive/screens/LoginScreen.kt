@@ -61,10 +61,10 @@ fun LoginScreen(navController: NavController, firebaseviewmodel: FireBaseViewMod
             }
         )
     }
-    Scaffold(topBar = {}) {
+
         Column(
             Modifier
-                .padding(it)
+                .padding(5.dp)
                 .fillMaxWidth(),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
@@ -129,15 +129,17 @@ fun LoginScreen(navController: NavController, firebaseviewmodel: FireBaseViewMod
             ) {
                 Text(text = "Login")
             }
-            Button(colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.onSurface), shape = Shapes.medium,onClick = {
-                navController.navigate(SignUp.route)
+            Button(colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.onSurface),
+                shape = Shapes.medium,onClick = {
+                navController.navigate(SignUp.route) }
+            ) { Text(text = "Sign up") }
 
-            }
-            ) {
-                Text(text = "Sign Up")
+            Button(colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.onSurface),
+                shape = Shapes.medium,onClick = {
+                    navController.navigate(Home.route) }
+            ) { Text(text = "I am developer") }
+
             }
         }
-    }
 
 
-}
