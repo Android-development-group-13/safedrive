@@ -10,15 +10,20 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.safedrive.components.BottomNavigationBar
+import com.example.safedrive.components.NavRoute
+import com.example.safedrive.components.TopBar
 import com.example.safedrive.screens.HomeScreen
 import com.example.safedrive.screens.LoginScreen
+import com.example.safedrive.screens.RecordDriveScreen
+import com.example.safedrive.screens.SettingsScreen
 import com.example.safedrive.screens.SignUpScreen
 import com.example.safedrive.screens.WelcomeScreen
 import com.example.safedrive.ui.theme.SafedriveTheme
-import com.example.safedrive.viewModels.FireBaseViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,59 +35,45 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                  NavigationApp()
+                  MainScreen()
                 }
             }
         }
     }
 }
 
-
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun NavigationApp() {
+fun MainScreen() {
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = "welcome") {
-        composable(route = "welcome") {
-            WelcomeScreen(navController)
-        }
-        composable(
-            route = "login"
-        ) {
-            LoginScreen(navController = navController, firebaseviewmodel = FireBaseViewModel())
-        }
-        composable(
-            route = "signup"
-        ) {
-            SignUpScreen(navController = navController, fireBaseViewModel = FireBaseViewModel())
-        }
-        composable(route = "home") {
-            HomeScreen(navController = navController)
-        }
-        /*composable(
-
-            route = "signup", arguments = listOf(navArgument(name = "country") {
-                type = NavType.StringType
-            })
-        ) { it ->
-            it.arguments?.getString("country")?.let { it1 -> SinglePage(navController, it1) }
-
-        }*/
-
+    Scaffold(
+        topBar = { TopBar(navController = navController, title = "") },
+        bottomBar = { BottomNavigationBar(navController = navController) }
+    ) {
+        NavigationApp(navController = navController)
     }
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    SafedriveTheme {
-        Greeting("Android")
+fun NavigationApp(navController: NavHostController) {
+    NavHost(navController = navController, startDestination = NavRoute.Welcome.route) {
+        composable(route = NavRoute.Welcome.route) {
+            WelcomeScreen(navController = navController)
+        }
+        composable(route = NavRoute.Login.route) {
+            LoginScreen(navController = navController)
+        }
+        composable(route = NavRoute.SignUp.route) {
+            SignUpScreen(navController = navController)
+        }
+        composable(route = NavRoute.Home.route) {
+            HomeScreen(navController = navController)
+        }
+        composable(route = NavRoute.RecordDrive.route) {
+            RecordDriveScreen(navController = navController)
+        }
+        composable(route = NavRoute.Settings.route) {
+            SettingsScreen(navController = navController)
+        }
     }
 }
